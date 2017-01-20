@@ -1,0 +1,64 @@
+<project name="zk-quick-navigation-dashlet" default="package-jar-module">
+ 
+	<property name="project.dir" value="."/>
+    <property name="build.dir" value="${project.dir}/build"/>
+	
+	<!-- jenkins settings -->
+	<property name="publish_release" value="true"/>
+	<property name="publish_release_dir" value =""/>
+		
+	
+	<!-- customización del jar.filename -->
+	<property name="version" value="0.3" />
+	<property name="name" value="zk-quick-navigation-dashlet" />
+	<property name="jar.file" value="${build.dir}/dist/"/>
+		
+	<script language="javascript">
+    <![CDATA[
+	 	version = project.getProperty("version");
+	 	
+		jarName = project.getProperty("name") + "-" + version + ".jar";
+	 	project.setProperty("jar.name",jarName);
+	 	print("JAR name generado: " + project.getProperty("jar.name"));
+	 		 	
+	 	jarFileDest = project.getProperty("jar.file") + jarName;
+		project.setProperty("jar.file",jarFileDest);
+		print("JAR path generado: " + project.getProperty("jar.file"));
+		
+	]]>
+    </script>
+	
+  <target name="jar">
+     <delete file="${jar.file}"/>
+          
+     <manifest file="MANIFEST.MF">
+        <attribute name="Built-By" value="Zylk"/>        
+        <attribute name="Implementation-Version" 
+                 value="${version}"/>         
+    </manifest>
+  
+      <jar destfile="${jar.file}"
+           basedir="."           
+           manifest="MANIFEST.MF"
+           >
+        <fileset dir="${project.dir}/alfresco" includes="*.*" />
+      	<fileset dir="${project.dir}/META-INF" includes="*.*" />
+  	</jar>
+  </target>
+  
+  <target name="cleanup">
+       <delete>         
+         <fileset file="MANIFEST.MF"/>
+       </delete>  
+  </target>
+  
+  <target name="package-jar-module" depends="jar,cleanup" />
+	
+	<!-- publish -->
+	<target name="check-publish">
+	    <available file="${publish_release_dir}/${jar.name}" property="amp.published"/>
+	</target>
+	 <target name="publish" depends="check-publish" if="${publish_release}" unless="${amp.published}">
+	        <copy file="${jar.file}" tofile="${publish_release_dir}/${jar.name}" overwrite="false" verbose="true"/>
+	</target>
+</project>

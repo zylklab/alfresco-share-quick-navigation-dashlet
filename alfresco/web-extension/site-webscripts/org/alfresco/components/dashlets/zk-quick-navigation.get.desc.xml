@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Quick Navigation</shortname>
+   <description>Dashlet para la navegación rápida de directorios</description>
+   <family>dashlet</family>
+   <url>/components/dashlets/zk-quick-navigation</url>
+</webscript>

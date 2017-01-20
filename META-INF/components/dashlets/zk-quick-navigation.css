@@ -1,0 +1,8 @@
+.zk-quick-navigation-dashlet .body {
+    overflow-x: visible;
+}
+
+
+.zk-quick-navigation-dashlet .yui-ac {
+    z-index: 1 !important;
+}
