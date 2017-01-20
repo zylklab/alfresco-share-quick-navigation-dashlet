@@ -5,8 +5,8 @@ A dashlet for the share interface that lets you make a quick search by name, pro
 
 ## configuration
 
-/zk-quick-navigation-dashlet/alfresco/web-extension/site-webscripts/org/alfresco/components/dashlets/zk-quick-navigation.get.config.xml
-		
+[zk-quick-navigation.get.config.xml] (alfresco/web-extension/site-webscripts/org/alfresco/components/dashlets/zk-quick-navigation.get.config.xml)
+
 - showInBrowse: [ true | false]  if true, performed navigation will go to share browser interface, else to the detail of the selected item 
 - showInSite:	[ true | false ] if true and site path, the performed navigation will be shown in the site document library, else in the general repository. 
 
