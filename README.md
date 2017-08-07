@@ -3,6 +3,9 @@
 
 A dashlet for the share interface that lets you make a quick search by name, providing user a navigation to the found path.
 
+![Quick navigation dashlet preview](alfresco-quick-navigation.gif)
+
+
 ## configuration
 
 [zk-quick-navigation.get.config.xml] (alfresco/web-extension/site-webscripts/org/alfresco/components/dashlets/zk-quick-navigation.get.config.xml)
